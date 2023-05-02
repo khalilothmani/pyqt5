@@ -1,0 +1,47 @@
+from PyQt5.uic import loadUi
+from PyQt5.QtWidgets import QApplication, QMessageBox
+
+def premier(a):
+    pr = True
+    j = 2
+    while pr and j <= a // 2:
+        if a % j == 0:
+            pr = False
+        j = j + 1
+    return pr
+
+def play():
+ 
+
+    if not input_val.isdigit():
+       
+        message_box = QMessageBox()
+        message_box.setIcon(QMessageBox.Warning)
+        message_box.setWindowTitle("Error")
+        message_box.setText("Invalid input. Please enter a valid number.")
+        message_box.exec_()
+    else:
+        
+        a = int(input_val)
+       
+        is_prime = premier(a)
+       
+        windows.res.setText(str(is_prime))
+
+def effacer():
+
+    windows.aa.clear()
+    windows.res.clear()
+
+
+app = QApplication([])
+
+window = loadUi("fpremier.ui")
+
+window.show()
+
+window.factp.clicked.connect(play)
+window.ef.clicked.connect(effacer)
+
+app.exec_()
+
